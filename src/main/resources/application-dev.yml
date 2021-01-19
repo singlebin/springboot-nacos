@@ -1,0 +1,41 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: nacos-provider
+  cloud:
+     nacos:
+       discovery:
+         server-addr: 127.0.0.1:8848
+       config:
+         server-addr: 127.0.0.1:8848
+         file-extension: yaml
+         prefix: nacos-provider1
+     sentinel:
+       transport:
+         port: 8719
+         dashboard: localhost:8080
+       eager: true
+
+
+
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848
+
+xxl:
+  job:
+    # 地址指定 任务调度器地址
+    admin:
+      addresses: http://127.0.0.1:9999/xxl-job-admin
+    # 执行器名称 (如果集群保持名称一致就行了)
+    executor:
+      appname: xxl-job-executor-sample
+      port: 8111
+      ip: 10.22.11.30
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: -1
+    accessToken: ''
+    #  log-path: ${logback.logFileDir}
+    # 日志保存时间
+    #  log-retention-days: -1
